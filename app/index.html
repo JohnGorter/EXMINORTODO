@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+        <script src="todo.js"></script>
+        <script src="app.js"></script>
+        
+        <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.18.0.css">
+        <script src="http://code.jquery.com/qunit/qunit-1.18.0.js"></script>
+        <script src="tests.js"></script>
+        <script src="modernizr.js"></script>
+        
+  
+        <link rel="stylesheet" href="./default.css"/>
+    </head>
+    <body>
+
+   <!-- <div id="qunit"></div>
+    <div id="qunit-fixture"></div>-->
+        
+        <div class="block">
+            <h1>insert a new todo</h1>
+            <form id="form" novalidate="true">
+                <dl>
+                    <dt>Title</dt><dd><input type="text" id="title" name="title" title="blaa" pattern="[A-Z]{5}" required></input>
+                    <span class="error">wel ff invullen</span>
+                    </dd>
+                    <dt>Description</dt><dd><input type="text" id="description" name="description"></input></dd>
+                </dl>
+                <input type="submit" id="btnSave" value="save"></input>
+            </form>
+        </div>
+        <div class="block">
+            <h1>todos</h1>
+           <ul id="todos">
+            
+          </ul>
+        </div>
+            
+        <div class="block">
+            <h1>details of todo</h1>
+          <h3 id="detail_title"></h3>
+          <p id="detail_description"></p>
+        </div>
+        
+        
+        <div style="border:1px solid black;font-size:9;position:absolute;bottom:10px;width:98%;padding:5px;">
+            <h4>HTML5 features</h4>
+            Input validation: <a href="http://www.sitepoint.com/html5-forms-javascript-constraint-validation-api/">Input validation</a><br/>
+            Video Audio Support: <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video#Seeking_through_media">Video and Audio</a>
+        </div>
+        
+    </body>
+</html>

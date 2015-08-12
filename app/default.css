@@ -1,0 +1,16 @@
+.block {
+    font-family:verdana, tahoma;
+    margin:5px;
+    padding:5px;
+    border:1px solid black;
+    border-radius: 10px;
+    position:relative;
+    width:350px;
+    background: linear-gradient(white, lightblue);
+}
+
+input + span { display:none;}
+    
+.invalid + span { display:inline}
+.error { color:red}
+
