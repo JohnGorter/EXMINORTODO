@@ -1,5 +1,16 @@
+@font-face {
+    font-family:john;
+    src: url('john.otf')
+}
+
+
+.local { color:green;}
+.remote { color:black;}
+
 .block {
-    font-family:verdana, tahoma;
+    font-family: tahoma;
+    font-size:20px;
+    /*font-family:verdana, tahoma;*/
     margin:5px;
     padding:5px;
     border:1px solid black;

@@ -1,16 +1,20 @@
 $(function(){
      // test the todo api
-    var todoapp = com.johngorter.todoapp.init();
-    var refreshlist = function(){
+    var todoapp = com.johngorter.todoapp.init(refreshlist);
+    
+    
+    navigator.geolocation.getCurrentPosition(function(params){ alert('aha' + params.coords.latitude); }, function(){})
+     function refreshlist (){
         $("#todos").text("");
         var todos = todoapp.getTodos(); 
         for (var todo in todos)
-                $("<li>").text(todos[todo].title).click(function(){
+                $("<li>").text(todos[todo].title).addClass(todos[todo].local ? "local":"remote").click(function(){
                     var todo = todoapp.getTodoByTitle($(this).text());
                     $("#detail_title").text(todo.title);
                     $("#detail_description").text(todo.description); 
                 }).appendTo("#todos"); 
     };
+    
 
     // hook up our UI to backend
     $("#title").on("invalid", function(){
@@ -20,10 +24,9 @@ $(function(){
     
     $("#title").on("keyup", function(){
         $(this).removeClass("invalid");
-        $("#title")[0].setCustomValidity($("#title").val() === "JOHNW" ? "User already exists" : "");
+       // $("#title")[0].setCustomValidity($("#title").val() === "JOHNW" ? "User already exists" : "");
         $(this)[0].checkValidity();}
     );
-    
    
     $("#btnSave").click(function(){
         if ($("#form")[0].checkValidity()) {
@@ -33,6 +36,17 @@ $(function(){
         }
         event.preventDefault();
         event.stopPropagation();
-        }); 
     });
-            
+    
+    $("body").css('background-color', (navigator.onLine ? 'green' : 'red'));
+    todoapp.setOnline(navigator.onLine, refreshlist);
+    
+    $(window).on('online', function() { $("body").css('background-color', (navigator.onLine ? 'green' : 'red'));
+                 todoapp.setOnline(navigator.onLine, refreshlist);
+                 } );
+    $(window).on('offline', function() { $("body").css('background-color', (navigator.onLine ? 'green' : 'red'));
+                 todoapp.setOnline(navigator.onLine, refreshlist);
+                 } );
+});
+       
+      
